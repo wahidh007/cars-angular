@@ -1,0 +1,40 @@
+<!-- <mat-card style="width: 50%; margin-top: 1rem; margin-bottom: 2rem;"> -->
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{operation}} Car</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form (ngSubmit)="onSubmit(carForm)" #carForm="ngForm">
+      <p>
+        <mat-form-field style="width: 100%;">
+          <mat-label>Proprietaire</mat-label>
+          <input matInput id="prop" name="prop" required placeholder="Proprietaire" [(ngModel)]="car.prop" #prop="ngModel">
+          <mat-error *ngIf="prop.errors?.['required']">
+            Proprietaire is required!
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field style="width: 100%;">
+          <mat-label>Marque</mat-label>
+          <input matInput id="marque" name="marque" required placeholder="Marque" [(ngModel)]="car.marque" #marque="ngModel">
+          <mat-error *ngIf="marque.errors?.['required']">
+            Marque is required!
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Date 1er circulation</mat-label>
+          <input matInput [matDatepicker]="picker" id="dateCirculation" name="dateCirculation" required [(ngModel)]="car.dateCirulation">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </p>
+      <p>
+        <button mat-raised-button color="primary" type="submit" mat-dialog-close> {{operation}} </button>
+      </p>
+    </form>
+  </mat-card-content>
+</mat-card>

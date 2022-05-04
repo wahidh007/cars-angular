@@ -1,0 +1,51 @@
+<mat-list role="list">
+  <mat-card style="width: 50%;">
+    <p *ngIf="cars.length===0">No Car yet !</p>
+    <app-car-item *ngFor="let car of cars" [car]="car"></app-car-item>
+  </mat-card>
+  <!-- **-------------------** -->
+  <mat-divider style="width: 50%; margin-top: 1rem; margin-bottom: 1rem;"></mat-divider>
+  <mat-card style="width: 50%;">
+    <div><h2>Table</h2></div>
+    <div class="demo-button-container">
+      <button mat-raised-button (click)="addData()" class="demo-button">
+        Add data
+      </button>
+      <button
+          mat-raised-button
+          [disabled]="!dataSource.length"
+          (click)="removeData()"
+          class="demo-button">
+        Remove data
+      </button>
+    </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Id.</th>
+        <td mat-cell *matCellDef="let element">{{element.id}}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="prop">
+        <th mat-header-cell *matHeaderCellDef>Proprietaire</th>
+        <td mat-cell *matCellDef="let element">{{element.prop}}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="marque">
+        <th mat-header-cell *matHeaderCellDef>Marque</th>
+        <td mat-cell *matCellDef="let element">{{element.marque}}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="dateCirculation">
+        <th mat-header-cell *matHeaderCellDef>Date Circulation</th>
+        <td mat-cell *matCellDef="let element">{{element.dateCirulation | date:'short'}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card>
+</mat-list>

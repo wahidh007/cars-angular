@@ -1,0 +1,17 @@
+<mat-list-item role="listitem">
+  <mat-icon mat-list-icon>directions_car</mat-icon>
+  <div mat-line>{{car.marque}}  - {{ car.prop }}</div>
+  <div mat-line> {{car.dateCirulation | date }} </div>
+
+  <span class="example-spacer"></span>
+  <button mat-icon-button color="primary" (click)="editCar(car)">
+    <mat-icon>edit</mat-icon>
+  </button>
+  <button mat-icon-button color="warn" (click)="deleteCar(car)">
+    <mat-icon>delete</mat-icon>
+  </button>
+  <button mat-icon-button color="accent" [routerLink]="['/car-detail', car.id]">
+    <mat-icon>details</mat-icon>
+  </button>
+</mat-list-item>
+<mat-divider></mat-divider>
