@@ -28,7 +28,7 @@ const cars = [
 
 app.use('/api/cars', carRoutes)
 
-app.use(express.static(path.join(__dirname, 'www')))
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.listen(3000, () => {
   console.log('Listening on port 3000...')
