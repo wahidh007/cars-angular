@@ -4,6 +4,7 @@ const cors = require('cors')
 const carRoutes = require('./routes/cars.routes')
 
 const mongoose = require('mongoose')
+const { env } = require('process')
 
 const app = express()
 
@@ -30,7 +31,8 @@ app.use('/api/cars', carRoutes)
 
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.listen(3000, () => {
+const PORT = process.env.port || 3000
+app.listen(PORT, () => {
   console.log('Listening on port 3000...')
 })
 
