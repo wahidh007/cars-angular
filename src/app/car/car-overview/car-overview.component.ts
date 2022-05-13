@@ -17,4 +17,8 @@ export class CarOverviewComponent implements OnInit {
     this.carService.openDialog('Add');
   }
 
+  carNumber() : number {
+    return this.carService.cars.length;
+  }
+
 }

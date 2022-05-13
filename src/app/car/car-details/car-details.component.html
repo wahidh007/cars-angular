@@ -1,5 +1,6 @@
 <mat-card style="width: 50%;">
-  <h1> {{ car!.marque }} | {{ car!.prop }} </h1>
-  <p>car-details works!</p>
+  <h1> Marque: {{ car!.marque }} </h1>
+  <h4> Proprietaire: {{ car!.prop }} </h4>
+  <p>Date mise en circulation: {{ car!.dateCirulation | date: 'short'}}</p>
   <a routerLink="/carList">Back</a>
 </mat-card>

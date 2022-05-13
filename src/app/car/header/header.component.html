@@ -4,10 +4,19 @@
   </button> -->
   <span>My App</span>
   <span class="example-spacer"></span>
-  <button mat-flat-button color="primary" routerLink="/carsList">Cars List</button>
-  <button mat-button routerLink="/apropos">A Propos</button>
+  <!-- <button mat-flat-button color="primary" routerLink="/carsList">Cars List</button> -->
+  <a mat-button routerLinkActive="active" routerLink="/carsList" routerLinkActive="mat-accent">Cars List</a>
+  <a mat-button routerLink="/apropos" routerLinkActive="mat-accent">A Propos</a>
+
   <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with login icon">
+
+  <a mat-button class="login" routerLink="/login" *ngIf="!isAuth" routerLinkActive="mat-accent">
     <mat-icon>login</mat-icon>
-  </button>
+    Login
+  </a>
+  <a mat-button class="login" routerLink="/login" (click)="onLogOut()" *ngIf="isAuth" routerLinkActive="mat-accent">
+    <mat-icon>logout</mat-icon>
+    Logout
+  </a>
+
 </mat-toolbar>

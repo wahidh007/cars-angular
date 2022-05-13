@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Car } from 'src/app/models/car.model';
 import { CarsService } from 'src/app/services/cars.service';
 
@@ -14,9 +15,9 @@ export class CarAddComponent implements OnInit {
   operation!: string;
   car!: Car;
 
-  constructor(private carsService: CarsService, @Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(private carsService: CarsService, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: any) {
     if (data.car === undefined) {
-      this.car = new Car(-1, '', '', new Date());
+      this.car = new Car("-1", '', '', new Date());
     } else {
       this.car = data.car;
     }
@@ -33,8 +34,21 @@ export class CarAddComponent implements OnInit {
       return;
     }
 
-    let car = new Car(1, carForm.value.prop, carForm.value.marque, carForm.value.dateCirculation);
-    this.carsService.addCar(car);
+    if (this.operation === 'Add') {
+      let car = new Car("1", carForm.value.prop, carForm.value.marque, carForm.value.dateCirculation);
+      this.carsService.addCar(car);
+      // snackBar
+      this._snackBar.open('Car added !', 'hide', {
+        duration: 3000
+      });
+    } else {
+      let car = new Car(this.car.id, carForm.value.prop, carForm.value.marque, carForm.value.dateCirculation);
+      this.carsService.updateCar(car);
+      // snackBar
+      this._snackBar.open('Car updated !', 'hide', {
+        duration: 3000
+      });
+    }
 
     carForm.resetForm();
 

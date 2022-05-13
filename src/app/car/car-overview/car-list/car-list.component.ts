@@ -11,21 +11,25 @@ import { CarsService } from 'src/app/services/cars.service';
 export class CarListComponent implements OnInit {
 
   cars: Car[] = [];
+  isLoading = false;
 
   constructor(private carsService: CarsService) { }
 
   ngOnInit(): void {
     // this.cars = this.carsService.cars;
+    this.isLoading = true;
     this.carsService.carsUpdates
       .subscribe((c: Car[]) =>
         {
           this.cars = c;
           this.dataSource = this.cars;
+          this.isLoading = false;
         });
     this.carsService.getCars();
   }
 //********* */
-  displayedColumns: string[] = ['id', 'prop', 'marque', 'dateCirculation'];
+  // displayedColumns: string[] = ['id', 'prop', 'marque', 'dateCirculation'];
+  displayedColumns: string[] = ['prop', 'marque', 'dateCirculation'];
   // dataSource = [...this.carsService.cars];
   // dataSource = this.carsService.cars;
   dataSource: Car[] = [];

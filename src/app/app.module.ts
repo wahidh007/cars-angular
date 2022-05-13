@@ -12,6 +12,11 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTableModule} from '@angular/material/table';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSidenavModule } from  '@angular/material/sidenav';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +29,8 @@ import { CarItemComponent } from './car/car-overview/car-item/car-item.component
 import { CarDetailsComponent } from './car/car-details/car-details.component';
 import { FormsModule } from '@angular/forms';
 import { AproposComponent } from './car/apropos/apropos.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthComponent } from './car/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -34,13 +41,15 @@ import { AproposComponent } from './car/apropos/apropos.component';
     CarListComponent,
     CarItemComponent,
     CarDetailsComponent,
-    AproposComponent
+    AproposComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule,
     MatListModule,
     MatCardModule,
     MatButtonModule,
@@ -52,7 +61,12 @@ import { AproposComponent } from './car/apropos/apropos.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatDialogModule,
-    MatTableModule
+    MatTableModule,
+    MatSnackBarModule,
+    MatSidenavModule,
+    MatGridListModule,
+    MatTabsModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,30 @@
+<mat-card style="width: 60%;">
+  <mat-tab-group mat-align-tabs="center">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon">login</mat-icon>
+        Login
+      </ng-template>
+      <mat-card>
+        <mat-card-content>
+          <img src="assets/img/login.png" width="207px" height="143">
+          <p>
+            Login Form
+          </p>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-raised-button color="primary" (click)="onSignIn()">Login</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon">edit</mat-icon>
+        Register
+      </ng-template>
+      <mat-card>
+        <h1>Registration Form</h1>
+      </mat-card>
+    </mat-tab>
+  </mat-tab-group>
+</mat-card>
